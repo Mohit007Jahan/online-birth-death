@@ -1,0 +1,64 @@
+.slide-169-77 {
+    background: linear-gradient(
+        rgba(0, 128, 0, 1),
+        rgba(0, 128, 0, 1)
+      ),
+      linear-gradient(
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 1)
+      ),
+      rgba(255, 255, 255, 1);
+    padding: 192px 473px 277px 481px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nidbd-2 {
+    width: 348px;
+    height: 348px;
+    margin-bottom: 147px;
+    margin-left: 305px;
+  }
+  .flex-wrapper-one {
+    display: flex;
+    align-items: flex-start;
+  }
+  .group-1 {
+    margin-right: 210px;
+    padding: 0 0 6px;
+    position: relative;
+  }
+  .rectangle-7 {
+    width: 378px;
+    height: 110px;
+    background-color: var(--white);
+    border-radius: 23px;
+    position: relative;
+  }
+  .admin {
+    max-width: 175px;
+    font-family: "Lalezar";
+    font-size: 64px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--green);
+    text-align: center;
+    position: absolute;
+    left: 101px;
+    top: 16px;
+  }
+  .group-2 {
+    background-color: var(--white);
+    border-radius: 23px;
+    padding: 10px 127px 0;
+    display: flex;
+    align-items: flex-start;
+  }
+  .user {
+    max-width: 124px;
+    font-family: "Lalezar";
+    font-size: 64px;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--green);
+  }

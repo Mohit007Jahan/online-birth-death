@@ -1,0 +1,54 @@
+# Enable error logging
+php_flag log_errors on
+php_value error_log "php_errors.log"
+
+# Disable error display
+php_flag display_errors off
+
+# Protect error log
+<Files "php_errors.log">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Protect sensitive files
+<FilesMatch "^(config\.php|dbconfig\.php|php_errors\.log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Disable directory listing
+Options -Indexes
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Security headers
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "DENY"
+Header set X-XSS-Protection "1; mode=block"
+Header set Content-Security-Policy "default-src 'self' https: 'unsafe-inline' 'unsafe-eval';"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Handle errors
+ErrorDocument 404 /error.php
+ErrorDocument 403 /error.php
+ErrorDocument 500 /error.php
+
+# Protect uploads directory and prevent script execution
+<FilesMatch "^uploads/.*\.(php|phtml|php3|php4|php5|php7|phar|inc)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Allow only specific file types in uploads
+<FilesMatch "^uploads/.*\.(jpg|jpeg|png|gif|pdf)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# URL rewriting
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L] 

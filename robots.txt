@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /admin_*
+Disallow: /user_*
+Disallow: /uploads/
+Disallow: /dbconfig.php
+Disallow: /database.sql
+Disallow: /.htaccess
+Disallow: /error.php
+
+Allow: /index.php
+Allow: /verification_status.php
+
+Sitemap: /sitemap.xml 

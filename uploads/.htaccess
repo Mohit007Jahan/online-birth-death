@@ -1,0 +1,33 @@
+# Deny access to all files by default
+Order Deny,Allow
+Deny from all
+
+# Allow access to specific file types
+<FilesMatch "\.(jpg|jpeg|png|gif|pdf)$">
+    Allow from all
+</FilesMatch>
+
+# Prevent script execution
+<FilesMatch "\.(php|php3|php4|php5|php7|phtml|cgi|pl|py|jsp|asp|htm|html|shtml|sh|phar)$">
+    Deny from all
+</FilesMatch>
+
+# Disable PHP engine
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Set content disposition for downloads
+<FilesMatch "\.(pdf)$">
+    Header set Content-Disposition "attachment"
+</FilesMatch>
+
+# Additional security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule> 

@@ -1,0 +1,25 @@
+# Enable CORS
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET, OPTIONS"
+Header set Access-Control-Allow-Headers "Content-Type"
+
+# Set proper MIME types
+AddType application/json .json
+AddType application/octet-stream .bin
+AddType application/octet-stream .weights
+
+# Allow access to model files
+<FilesMatch "\.(json|bin|weights)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# Disable directory listing
+Options -Indexes
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Ensure proper handling of OPTIONS requests
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
